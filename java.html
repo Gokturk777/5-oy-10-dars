@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Talabalar ro'yxati</title>
+</head>
+<body>
+
+<h1>Talabalar ro'yxati</h1>
+
+<h2>Barcha talabalar</h2>
+<ol id="royxat"></ol>
+
+<h2>Balli 80 dan yuqori talabalar</h2>
+<ul id="yuqori"></ul>
+
+<h2>Statistika</h2>
+<p id="statistika"></p>
+
+<script>
+
+let talabalar = [
+    { ism: "Aziz", yosh: 16, ball: 85 },
+    { ism: "Madina", yosh: 15, ball: 92 },
+    { ism: "Jasur", yosh: 17, ball: 74 },
+    { ism: "Dilnoza", yosh: 16, ball: 88 },
+    { ism: "Sardor", yosh: 15, ball: 61 },
+    { ism: "Kamola", yosh: 16, ball: 79 }
+];
+
+let royxat = document.getElementById("royxat");
+let yuqori = document.getElementById("yuqori");
+
+let yigindi = 0;
+let max = 0;
+let ism = "";
+
+for (let i = 0; i < talabalar.length; i++) {
+
+    royxat.innerHTML += "<li>" + "<b>" + talabalar[i].ism + "</b>, " + talabalar[i].yosh + " yosh, ball: " + talabalar[i].ball + "</li>";
+
+    if (talabalar[i].ball >= 80) {
+        yuqori.innerHTML += "<li>" + talabalar[i].ism + ", ball: " + talabalar[i].ball + "</li>";
+    }
+
+    yigindi += talabalar[i].ball;
+
+    if (talabalar[i].ball > max) {
+        max = talabalar[i].ball;
+        ism = talabalar[i].ism;
+    }
+}
+
+let ortacha = yigindi / talabalar.length;
+
+document.getElementById("statistika").innerHTML =
+"Talabalar soni: " + talabalar.length + "<br>" +
+"O'rtacha ball: " + ortacha.toFixed(1) + "<br>" +
+"Eng yuqori ball: " + ism + " (" + max + ")";
+
+</script>
+
+</body>
+</html>
